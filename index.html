@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -11,68 +11,59 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.8.1/flowbite.min.css" rel="stylesheet" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.8.1/flowbite.min.js"></script>
 </head>
-<body class="bg-black text-gray-100 min-h-screen font-sans">
+<body class="bg-white">
 
-    <!-- ================= PANEL DE CONTROL (SEMOVI GUSANIZA: VERDE Y NEGRO) ================= -->
-    <div id="adminPanel" class="min-h-screen bg-black flex items-center justify-center p-4">
-        <div class="max-w-xl w-full bg-gray-900 p-8 rounded-2xl shadow-2xl border border-emerald-500/40">
+    <!-- ================= PANEL DE CONTROL ================= -->
+    <div id="adminPanel" class="min-h-screen bg-gray-50 flex items-center justify-center p-4 hidden">
+        <div class="max-w-xl w-full bg-white p-8 rounded-2xl shadow-xl border border-gray-200">
             <div class="text-center mb-6">
-                <div class="flex justify-center mb-3">
-                    <span class="inline-flex items-center px-4 py-1.5 rounded-full text-xs font-bold bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 uppercase tracking-widest">
-                        SEMOVI GUSANIZA
-                    </span>
-                </div>
-                <h1 class="text-3xl font-extrabold text-white tracking-tight">SEMOVI GUSANIZA</h1>
-                <p class="text-xs text-emerald-400/80 mt-1">Configura los datos del documento y genera tu enlace automático.</p>
+                <img src="https://app.semovi.cdmx.gob.mx/validacion-qr/images/logo-cdmx-semovi.png" class="mx-auto h-12 mb-3" alt="SEMOVI">
+                <h1 class="text-2xl font-bold text-gray-800">Panel de Configuración SEMOVI</h1>
+                <p class="text-sm text-gray-500 mt-1">Modifica los datos del documento y genera tu enlace automático.</p>
             </div>
 
             <form id="editorForm" class="space-y-4">
                 <input type="hidden" id="inputToken">
 
                 <div>
-                    <label class="block text-xs font-semibold text-emerald-400 uppercase tracking-wider mb-1">Nombre Completo</label>
-                    <input type="text" id="inputNombre" value="JUAN PÉREZ HERNÁNDEZ" class="w-full bg-black border border-emerald-500/40 rounded-lg p-2.5 text-sm text-white focus:ring-2 focus:ring-emerald-400 focus:border-emerald-400 focus:outline-none transition">
+                    <label class="block text-sm font-semibold text-gray-700 mb-1">Nombre Completo</label>
+                    <input type="text" id="inputNombre" value="JUAN PÉREZ HERNÁNDEZ" class="w-full border border-gray-300 rounded-lg p-2.5 text-sm focus:ring-2 focus:ring-[#9d2148] focus:outline-none">
                 </div>
 
                 <div>
-                    <label class="block text-xs font-semibold text-emerald-400 uppercase tracking-wider mb-1">Fecha de Expedición</label>
-                    <input type="text" id="inputExp" value="17/11/2025" class="w-full bg-black border border-emerald-500/40 rounded-lg p-2.5 text-sm text-white focus:ring-2 focus:ring-emerald-400 focus:border-emerald-400 focus:outline-none transition">
+                    <label class="block text-sm font-semibold text-gray-700 mb-1">Fecha de Expedición</label>
+                    <input type="text" id="inputExp" value="17/11/2025" class="w-full border border-gray-300 rounded-lg p-2.5 text-sm focus:ring-2 focus:ring-[#9d2148] focus:outline-none">
                 </div>
 
                 <div>
-                    <label class="block text-xs font-semibold text-emerald-400 uppercase tracking-wider mb-1">Folio de Documento</label>
-                    <input type="text" id="inputFolio" value="N16542850" class="w-full bg-black border border-emerald-500/40 rounded-lg p-2.5 text-sm text-white focus:ring-2 focus:ring-emerald-400 focus:border-emerald-400 focus:outline-none transition">
+                    <label class="block text-sm font-semibold text-gray-700 mb-1">Folio de Documento</label>
+                    <input type="text" id="inputFolio" value="N16542850" class="w-full border border-gray-300 rounded-lg p-2.5 text-sm focus:ring-2 focus:ring-[#9d2148] focus:outline-none">
                 </div>
 
                 <div>
-                    <label class="block text-xs font-semibold text-emerald-400 uppercase tracking-wider mb-1">Estado de Validez</label>
-                    <select id="inputValido" class="w-full bg-black border border-emerald-500/40 rounded-lg p-2.5 text-sm text-white focus:ring-2 focus:ring-emerald-400 focus:border-emerald-400 focus:outline-none transition">
+                    <label class="block text-sm font-semibold text-gray-700 mb-1">Estado de Validez</label>
+                    <select id="inputValido" class="w-full border border-gray-300 rounded-lg p-2.5 text-sm focus:ring-2 focus:ring-[#9d2148] focus:outline-none">
                         <option value="true">Válido ("Su documento es válido")</option>
                         <option value="false">No válido / Vencido</option>
                     </select>
                 </div>
 
-                <button type="button" onclick="applyAndGenerate()" class="w-full bg-emerald-600 hover:bg-emerald-500 text-black font-extrabold py-3 rounded-lg transition-all shadow-lg shadow-emerald-900/50 uppercase tracking-wider mt-2">
+                <button type="button" onclick="applyAndGenerate()" class="w-full bg-[#9d2148] hover:bg-[#801b3b] text-white font-bold py-3 rounded-lg transition shadow-md">
                     Generar Validación Automática
                 </button>
             </form>
-
-            <div id="generatedUrlBox" class="mt-6 hidden p-4 bg-black border border-emerald-500/40 rounded-xl">
-                <label class="block text-xs font-semibold text-emerald-400 uppercase tracking-wider mb-1">Enlace Generado:</label>
-                <div class="flex gap-2">
-                    <input type="text" id="finalGeneratedUrl" readonly class="w-full bg-gray-900 border border-emerald-500/40 rounded-lg p-2 text-xs text-white font-mono">
-                    <button onclick="copyGeneratedUrl()" class="bg-emerald-600 hover:bg-emerald-500 text-black px-3 py-1 rounded-lg text-xs font-bold transition">Copiar</button>
-                </div>
-            </div>
         </div>
     </div>
 
     <!-- ================= VISTA OFICIAL DE VALIDACIÓN SEMOVI ================= -->
-    <div id="validationView" class="hidden bg-white text-gray-900 min-h-screen">
+    <div id="validationView" class="hidden">
         <header>
             <nav class="bg-white border-gray-200 px-4 lg:px-6 py-2.5">
                 <div class="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl">
                     <img src="https://app.semovi.cdmx.gob.mx/validacion-qr/images/logo-cdmx-semovi.png" alt="SEMOVI" />
+                    <button onclick="openAdminPanel()" class="text-xs bg-gray-100 hover:bg-gray-200 text-gray-600 px-3 py-1.5 rounded-lg border font-medium">
+                        <i class="fas fa-cog mr-1"></i> Editar Datos
+                    </button>
                 </div>
             </nav>
         </header>
@@ -86,7 +77,7 @@
                     </svg>
                     <span class="sr-only">Info</span>
                     <div>
-                        <span class="text-2xl md:text-2xl">Para confirmar que estás en el sitio oficial de la SEMOVI, verifica que la URL sea: <strong>https://app.semovil.cdmx.gob.mxn/</strong>.</span>
+                        <span class="text-2xl md:text-2xl">Para confirmar que estás en el sitio oficial de la SEMOVI, verifica que la URL sea: <strong id="lblOfficialUrl">https://app.semovi.cdmx.gob.mx/</strong>.</span>
                     </div>
                 </div>
             </div>
@@ -153,8 +144,6 @@
     </div>
 
     <script>
-        const PREFIJO_URL = "https://app.semovil.cdmx.gob.mxn/";
-
         function generateRandomToken() {
             const array = new Uint8Array(16);
             window.crypto.getRandomValues(array);
@@ -162,15 +151,13 @@
         }
 
         const urlParams = new URLSearchParams(window.location.search);
-        const hasParams = urlParams.has('token') || urlParams.has('id') || urlParams.has('folio') || urlParams.has('exp') || urlParams.has('nombre');
+        const hasParams = urlParams.has('folio') || urlParams.has('exp') || urlParams.has('nombre');
 
         if (!hasParams) {
             document.getElementById('inputToken').value = generateRandomToken();
             document.getElementById('adminPanel').classList.remove('hidden');
-            document.getElementById('validationView').classList.add('hidden');
         } else {
             renderValidationView(urlParams);
-            document.getElementById('adminPanel').classList.add('hidden');
             document.getElementById('validationView').classList.remove('hidden');
         }
 
@@ -181,57 +168,46 @@
             const folio = document.getElementById('inputFolio').value;
             const valido = document.getElementById('inputValido').value;
 
-            const dataObj = { nombre, exp, folio, valido, token };
-            sessionStorage.setItem('semovi_doc_data', JSON.stringify(dataObj));
-
-            const fullCustomUrl = PREFIJO_URL + '?token=' + token + '&nombre=' + encodeURIComponent(nombre) + '&exp=' + encodeURIComponent(exp) + '&folio=' + encodeURIComponent(folio) + '&valido=' + valido;
-            document.getElementById('finalGeneratedUrl').value = fullCustomUrl;
-            document.getElementById('generatedUrlBox').classList.remove('hidden');
-
-            const cleanParams = new URLSearchParams({
+            const params = new URLSearchParams({
                 token: token,
                 nombre: nombre,
                 exp: exp,
                 folio: folio,
                 valido: valido
             });
-            const newRelativePathQuery = window.location.pathname + '?' + cleanParams.toString();
+
+            const newRelativePathQuery = window.location.pathname + '?' + params.toString();
             history.pushState(null, '', newRelativePathQuery);
 
             document.getElementById('adminPanel').classList.add('hidden');
-            renderDataInDOM(dataObj);
+            renderValidationView(params);
             document.getElementById('validationView').classList.remove('hidden');
             window.scrollTo(0, 0);
         }
 
-        function copyGeneratedUrl() {
-            const inputUrl = document.getElementById('finalGeneratedUrl');
-            inputUrl.select();
-            document.execCommand('copy');
-            alert('Enlace copiado al portapapeles');
+        function openAdminPanel() {
+            const currentParams = new URLSearchParams(window.location.search);
+            if(currentParams.has('nombre')) document.getElementById('inputNombre').value = currentParams.get('nombre');
+            if(currentParams.has('exp')) document.getElementById('inputExp').value = currentParams.get('exp');
+            if(currentParams.has('folio')) document.getElementById('inputFolio').value = currentParams.get('folio');
+            if(currentParams.has('valido')) document.getElementById('inputValido').value = currentParams.get('valido');
+            document.getElementById('inputToken').value = generateRandomToken();
+
+            document.getElementById('validationView').classList.add('hidden');
+            document.getElementById('adminPanel').classList.remove('hidden');
         }
 
         function renderValidationView(params) {
-            let data = {};
-            const savedData = sessionStorage.getItem('semovi_doc_data');
-            
-            if (savedData) {
-                data = JSON.parse(savedData);
-            } else {
-                data = {
-                    nombre: params.get('nombre') || 'JUAN PÉREZ HERNÁNDEZ',
-                    exp: params.get('exp') || '17/11/2025',
-                    folio: params.get('folio') || 'N16542850',
-                    valido: params.get('valido') || 'true'
-                };
-            }
-            renderDataInDOM(data);
-        }
+            const nombre = params.get('nombre');
+            const exp = params.get('exp');
+            const folio = params.get('folio');
+            const valido = params.get('valido');
 
-        function renderDataInDOM(data) {
-            if (data.nombre) document.getElementById('lblNombre').innerText = data.nombre;
-            if (data.exp) document.getElementById('lblExp').innerText = data.exp;
-            if (data.folio) document.getElementById('lblFolio').innerText = data.folio;
+            if (nombre) document.getElementById('lblNombre').innerText = nombre;
+            if (exp) document.getElementById('lblExp').innerText = exp;
+            if (folio) document.getElementById('lblFolio').innerText = folio;
+
+            document.getElementById('lblOfficialUrl').innerText = window.location.href;
 
             const now = new Date();
             const fechaValidacion = String(now.getDate()).padStart(2, '0') + '-' + 
@@ -241,7 +217,7 @@
                                     String(now.getMinutes()).padStart(2, '0');
             document.getElementById('lblValValidacion').innerText = fechaValidacion;
 
-            if (data.valido === 'false') {
+            if (valido === 'false') {
                 const alertBox = document.getElementById('validAlert');
                 alertBox.className = "flex items-center p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50";
                 document.getElementById('validText').innerText = "Documento no válido o vencido.";
