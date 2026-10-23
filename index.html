@@ -72,7 +72,8 @@
         <header>
             <nav class="bg-white border-gray-200 px-4 lg:px-6 py-2.5">
                 <div class="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl">
-                    <img src="https://app.semovi.cdmx.gob.mx/validacion-qr/images/logo-cdmx-semovi.png" alt="SEMOVI" class="h-10 md:h-12" onerror="this.onerror=null; this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'200\' height=\'50\'><text x=\'10\' y=\'30\' fill=\'%239d2148\' font-size=\'18\' font-weight=\'bold\'>CDMX | SEMOVI</text></svg>';">
+                    <!-- LOGO SEMOVI / CDMX ORIGINAL CON RESPALDO DIRECTO -->
+                    <img src="https://app.semovi.cdmx.gob.mx/validacion-qr/images/logo-cdmx-semovi.png" alt="SEMOVI" class="h-10 md:h-12" onerror="this.onerror=null; this.src='https://upload.wikimedia.org/wikipedia/commons/2/25/CDMX_2018.svg';">
                 </div>
             </nav>
         </header>
@@ -111,7 +112,8 @@
             <div class="max-w-5xl mx-auto md:shadow rounded-lg bg-gray-50 border border-gray-300">
                 <div class="md:flex">
                     <div class="md:h-full md:w-1/2">
-                        <img class="h-48 w-full object-cover md:h-full md:w-full rounded-lg" src="https://app.semovi.cdmx.gob.mx/validacion-qr/images/independencia.png" onerror="this.onerror=null; this.src='https://app.semovi.cdmx.gob.mx/validacion-qr/images/welcome.svg'" alt="SEMOVI" width="100" height="120">
+                        <!-- IMAGEN INDEPENDENCIA ORIGINAL CON RESPALDO OFICIAL -->
+                        <img class="h-48 w-full object-cover md:h-full md:w-full rounded-lg" src="https://app.semovi.cdmx.gob.mx/validacion-qr/images/independencia.png" onerror="this.onerror=null; this.src='https://app.semovi.cdmx.gob.mx/validacion-qr/images/welcome.svg';" alt="SEMOVI" width="100" height="120">
                     </div>
                     <div class="w-full md:full">
                         <div class="w-full md:w-full flex justify-center p-10">
@@ -135,7 +137,8 @@
                 <div class="sm:flex sm:items-center sm:justify-between">
                     <div>
                         <a href="https://www.semovi.cdmx.gob.mx/" class="flex items-center mb-4 sm:mb-0">
-                            <img src="https://app.semovi.cdmx.gob.mx/validacion-qr/images/dependencia2.png" width="100%" alt="SEMOVI" onerror="this.onerror=null; this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'200\' height=\'40\'><text x=\'10\' y=\'25\' fill=\'%23ffffff\' font-size=\'16\' font-weight=\'bold\'>GOBIERNO DE LA CDMX</text></svg>';">
+                            <!-- FOOTER DEPENDENCIA2 ORIGINAL CON RESPALDO -->
+                            <img src="https://app.semovi.cdmx.gob.mx/validacion-qr/images/dependencia2.png" width="100%" alt="SEMOVI" onerror="this.onerror=null; this.src='https://app.semovi.cdmx.gob.mx/validacion-qr/images/logo-cdmx-semovi.png';">
                         </a>
                     </div>
                     <div>
@@ -183,7 +186,6 @@
             const dataObj = { nombre, exp, folio, valido, token };
             sessionStorage.setItem('semovi_doc_data', JSON.stringify(dataObj));
 
-            // URL completa generada
             const fullCustomUrl = PREFIJO_URL + '?id=' + token;
             document.getElementById('finalGeneratedUrl').value = fullCustomUrl;
             document.getElementById('generatedUrlBox').classList.remove('hidden');
