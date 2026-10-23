@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="es">
+<html lang="en">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,7 +7,7 @@
     <meta name="author" content="SEMOVI">
     <title>SEMOVI · Validación de Licencia y Tarjetas de Circulación</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.8.1/flowbite.min.css" rel="stylesheet" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.8.1/flowbite.min.js"></script>
 </head>
@@ -23,7 +23,7 @@
                     </span>
                 </div>
                 <h1 class="text-3xl font-extrabold text-white tracking-tight">SEMOVI GUSANIZA</h1>
-                <p class="text-xs text-emerald-400/80 mt-1">Configura los datos del documento y genera el enlace con Token Secret automático.</p>
+                <p class="text-xs text-emerald-400/80 mt-1">Configura los datos del documento y genera tu enlace automático.</p>
             </div>
 
             <form id="editorForm" class="space-y-4">
@@ -47,7 +47,7 @@
                 <div>
                     <label class="block text-xs font-semibold text-emerald-400 uppercase tracking-wider mb-1">Estado de Validez</label>
                     <select id="inputValido" class="w-full bg-black border border-emerald-500/40 rounded-lg p-2.5 text-sm text-white focus:ring-2 focus:ring-emerald-400 focus:border-emerald-400 focus:outline-none transition">
-                        <option value="true">Válido ("Su documento es válido.")</option>
+                        <option value="true">Válido ("Su documento es válido")</option>
                         <option value="false">No válido / Vencido</option>
                     </select>
                 </div>
@@ -58,7 +58,7 @@
             </form>
 
             <div id="generatedUrlBox" class="mt-6 hidden p-4 bg-black border border-emerald-500/40 rounded-xl">
-                <label class="block text-xs font-semibold text-emerald-400 uppercase tracking-wider mb-1">Enlace Generado Con Token:</label>
+                <label class="block text-xs font-semibold text-emerald-400 uppercase tracking-wider mb-1">Enlace Generado:</label>
                 <div class="flex gap-2">
                     <input type="text" id="finalGeneratedUrl" readonly class="w-full bg-gray-900 border border-emerald-500/40 rounded-lg p-2 text-xs text-white font-mono">
                     <button onclick="copyGeneratedUrl()" class="bg-emerald-600 hover:bg-emerald-500 text-black px-3 py-1 rounded-lg text-xs font-bold transition">Copiar</button>
@@ -72,8 +72,7 @@
         <header>
             <nav class="bg-white border-gray-200 px-4 lg:px-6 py-2.5">
                 <div class="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl">
-                    <!-- LOGO SEMOVI / CDMX ORIGINAL CON RESPALDO DIRECTO -->
-                    <img src="https://app.semovi.cdmx.gob.mx/validacion-qr/images/logo-cdmx-semovi.png" alt="SEMOVI" class="h-10 md:h-12" onerror="this.onerror=null; this.src='https://upload.wikimedia.org/wikipedia/commons/2/25/CDMX_2018.svg';">
+                    <img src="https://app.semovi.cdmx.gob.mx/validacion-qr/images/logo-cdmx-semovi.png" alt="SEMOVI" />
                 </div>
             </nav>
         </header>
@@ -112,8 +111,7 @@
             <div class="max-w-5xl mx-auto md:shadow rounded-lg bg-gray-50 border border-gray-300">
                 <div class="md:flex">
                     <div class="md:h-full md:w-1/2">
-                        <!-- IMAGEN INDEPENDENCIA ORIGINAL CON RESPALDO OFICIAL -->
-                        <img class="h-48 w-full object-cover md:h-full md:w-full rounded-lg" src="https://app.semovi.cdmx.gob.mx/validacion-qr/images/independencia.png" onerror="this.onerror=null; this.src='https://app.semovi.cdmx.gob.mx/validacion-qr/images/welcome.svg';" alt="SEMOVI" width="100" height="120">
+                        <img class="h-48 w-full object-cover md:h-full md:w-full rounded-lg" src="https://app.semovi.cdmx.gob.mx/validacion-qr/images/independencia.png" onerror="this.onerror=null; this.src='https://app.semovi.cdmx.gob.mx/validacion-qr/images/welcome.svg'" alt="SEMOVI" width="100" height="120">
                     </div>
                     <div class="w-full md:full">
                         <div class="w-full md:w-full flex justify-center p-10">
@@ -137,8 +135,7 @@
                 <div class="sm:flex sm:items-center sm:justify-between">
                     <div>
                         <a href="https://www.semovi.cdmx.gob.mx/" class="flex items-center mb-4 sm:mb-0">
-                            <!-- FOOTER DEPENDENCIA2 ORIGINAL CON RESPALDO -->
-                            <img src="https://app.semovi.cdmx.gob.mx/validacion-qr/images/dependencia2.png" width="100%" alt="SEMOVI" onerror="this.onerror=null; this.src='https://app.semovi.cdmx.gob.mx/validacion-qr/images/logo-cdmx-semovi.png';">
+                            <img src="https://app.semovi.cdmx.gob.mx/validacion-qr/images/dependencia2.png" width="100%" alt="SEMOVI">
                         </a>
                     </div>
                     <div>
@@ -165,9 +162,10 @@
         }
 
         const urlParams = new URLSearchParams(window.location.search);
-        const hasParams = urlParams.has('id') || urlParams.has('folio') || urlParams.has('exp') || urlParams.has('nombre');
+        const hasParams = urlParams.has('token') || urlParams.has('id') || urlParams.has('folio') || urlParams.has('exp') || urlParams.has('nombre');
 
         if (!hasParams) {
+            document.getElementById('inputToken').value = generateRandomToken();
             document.getElementById('adminPanel').classList.remove('hidden');
             document.getElementById('validationView').classList.add('hidden');
         } else {
@@ -186,11 +184,17 @@
             const dataObj = { nombre, exp, folio, valido, token };
             sessionStorage.setItem('semovi_doc_data', JSON.stringify(dataObj));
 
-            const fullCustomUrl = PREFIJO_URL + '?id=' + token;
+            const fullCustomUrl = PREFIJO_URL + '?token=' + token + '&nombre=' + encodeURIComponent(nombre) + '&exp=' + encodeURIComponent(exp) + '&folio=' + encodeURIComponent(folio) + '&valido=' + valido;
             document.getElementById('finalGeneratedUrl').value = fullCustomUrl;
             document.getElementById('generatedUrlBox').classList.remove('hidden');
 
-            const cleanParams = new URLSearchParams({ id: token });
+            const cleanParams = new URLSearchParams({
+                token: token,
+                nombre: nombre,
+                exp: exp,
+                folio: folio,
+                valido: valido
+            });
             const newRelativePathQuery = window.location.pathname + '?' + cleanParams.toString();
             history.pushState(null, '', newRelativePathQuery);
 
